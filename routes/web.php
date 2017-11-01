@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 //  入口文件
 Route::view('/posts', 'posts');
+
+//  入口文件
+Route::view('/todos', 'todos');

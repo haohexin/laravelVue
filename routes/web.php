@@ -19,4 +19,4 @@ Route::get('/', function () {
 Route::view('/posts', 'posts');
 
 //  入口文件
-Route::view('/todos', 'todos');
+Route::view('/todo', 'todo');

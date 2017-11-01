@@ -29,6 +29,37 @@ Route::group(['middleware' => ['cor']], function () {
         $data = \App\Post::find($id);
         return response()->json($data);
     });
+
+    //todod
+    Route::get('/todos', function () {
+        $data = \App\Todo::all();
+        return response()->json($data);
+    });
+
+    Route::get('/todos/{id}', function ($id) {
+        $data = \App\Todo::find($id);
+        return $data;
+    });
+
+    Route::post('/todos/create', function (Request $request) {
+        $data = \App\Todo::create([
+            'title' => $request['title']
+        ]);
+        return $data;
+    });
+
+    Route::patch('/todos/{id}/completed', function ($id) {
+        $data = \App\Todo::find($id);
+        $data->completed = !$data->completed;
+        $data->save();
+
+        return $data;
+    });
+
+    Route::delete('/todos/{id}/delete', function ($id) {
+        $data = \App\Todo::find($id)->delete();
+        return response()->json(['deleted']);
+    });
 });
 
 
